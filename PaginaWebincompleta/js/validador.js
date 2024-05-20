@@ -107,3 +107,73 @@ $(document).ready(function() {
   });
   
 });
+// validador.js
+
+$(document).ready(function() {
+  // Validación para el formulario de registro de productos
+  $("#formulario-producto").validate({
+      rules: {
+          id: {
+              required: true,
+              digits: true
+          },
+          categoria: {
+              required: true
+          },
+          nombre: {
+              required: true
+          },
+          descripcion: {
+              required: true
+          },
+          precio: {
+              required: true,
+              number: true
+          },
+          descuentoSubscriptor: {
+              required: true,
+              number: true,
+              range: [0, 100]
+          },
+          descuentoOferta: {
+              required: true,
+              number: true,
+              range: [0, 100]
+          }
+      },
+      messages: {
+          id: {
+              required: "El ID es obligatorio",
+              digits: "El ID debe ser un número entero"
+          },
+          categoria: {
+              required: "La categoría es obligatoria"
+          },
+          nombre: {
+              required: "El nombre del producto es obligatorio"
+          },
+          descripcion: {
+              required: "La descripción es obligatoria"
+          },
+          precio: {
+              required: "El precio es obligatorio",
+              number: "El precio debe ser un número"
+          },
+          descuentoSubscriptor: {
+              required: "El descuento para subscriptores es obligatorio",
+              number: "El descuento debe ser un número",
+              range: "El descuento debe estar entre 0 y 100"
+          },
+          descuentoOferta: {
+              required: "El descuento por oferta es obligatorio",
+              number: "El descuento debe ser un número",
+              range: "El descuento debe estar entre 0 y 100"
+          }
+      },
+      submitHandler: function(form) {
+          // Acción al enviar el formulario, por ejemplo:
+          alert('Producto registrado correctamente!');
+          form.submit();
+      }
+  });
+});
