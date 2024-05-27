@@ -14,18 +14,20 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="cuadro_login">
-                    <div class="mb-3 row">
-                        <label for="cuenta" class="col-sm-4 col-form-label">Cuenta</label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" id="cuenta" value="">
-                        </div>
+                  <div class="mb-3 row">
+                    <label for="Correo" class="col-sm-4 col-form-label">Correo</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="Correo" name="correo">
+                        <div id="correoError" class="invalid-feedback"></div>
                     </div>
-                    <div class="mb-3 row">
-                        <label for="password" class="col-sm-4 col-form-label">Contraseña</label>
-                        <div class="col-sm-8">
-                            <input type="password" class="form-control" id="password">
-                        </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="password" class="col-sm-4 col-form-label">Contraseña</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" id="password" name="password">
+                        <div id="passwordError" class="invalid-feedback"></div>
                     </div>
+                </div>
                     <div class="mb-3 row">
                         <button type="button" class="btn btn-primary boton_ingresar col-sm-12">Ingresar</button>
                     </div>
@@ -73,7 +75,23 @@
         </p>
         </div>
       </footer>
-    <script src="js/script.js"></script>
+               <!--
+      Se debe respetar el orden en que se escriben los siguientes links
+      hacia los scripts necesarios. Los scripts de más abajo usan los
+      scripts de más arriba, por eso deben ir en orden.
+    -->
+    
+    <!-- 1. Script de Boostrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
+    
+    <!-- 2. Script de JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- 3. Script de JQuery Validate (usa el Script de JQuery anterior) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js" integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- 4. Mi Script de Validadores (usa el Script de JQuery y de JQuery Validate anteriores) -->
+    <script src="js/script.js"></script>
+    <script src="js/validacionLogin.js"></script>
+  </body>
 </html>

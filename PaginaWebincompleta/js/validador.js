@@ -177,3 +177,42 @@ $(document).ready(function() {
       }
   });
 });
+$(document).ready(function() {
+  // Añadir reglas de validación a los campos individuales
+  $("#Correo").rules("add", {
+      required: true,
+      email: true,
+      messages: {
+          required: "Por favor, ingrese su correo electrónico.",
+          email: "Por favor, ingrese un correo electrónico válido."
+      }
+  });
+
+  $("#password").rules("add", {
+      required: true,
+      minlength: 6,
+      messages: {
+          required: "Por favor, ingrese su contraseña.",
+          minlength: "Su contraseña debe tener al menos 6 caracteres."
+      }
+  });
+
+  // Manejar el evento de clic del botón de ingreso
+  $(".boton_ingresar").click(function() {
+      var isValid = true;
+      // Validar cada campo individualmente
+      if (!$("#Correo").valid()) {
+          isValid = false;
+      }
+      if (!$("#password").valid()) {
+          isValid = false;
+      }
+
+      if (isValid) {
+          alert("Formulario válido y enviado!");
+          // Aquí iría el código para enviar el formulario
+      } else {
+          alert("Por favor, complete los campos correctamente.");
+      }
+  });
+});
