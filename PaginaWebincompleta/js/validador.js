@@ -216,3 +216,44 @@ $(document).ready(function() {
       }
   });
 });
+// validador.js
+
+$(document).ready(function() {
+  // Agregar método de validación para números
+  $.validator.addMethod("numeroValido", function(value, element) {
+      return this.optional(element) || /^[0-9]+$/.test(value);
+  }, "La cantidad debe ser un número válido");
+
+  // Validación del formulario
+  $("#formulario").validate({
+      rules: {
+          cantidad: {
+              required: true,
+              numeroValido: true
+          }
+      },
+      messages: {
+          cantidad: {
+              required: "La cantidad es un campo requerido",
+              numeroValido: "La cantidad debe ser un número válido"
+          }
+      },
+      errorPlacement: function(error, element) {
+          var name = element.attr("name");
+          $("#" + name + "Error").html(error);
+      },
+      highlight: function(element) {
+          $(element).addClass('is-invalid');
+      },
+      unhighlight: function(element) {
+          $(element).removeClass('is-invalid');
+      }
+  });
+
+  // Manejador de los botones (ejemplo de manejo del botón "Agregar")
+  $('.btn-primary').click(function(event) {
+      if ($("#formulario").valid()) {
+          alert('Formulario validado y enviado correctamente'); // Reemplaza esto con el manejo real del formulario
+      }
+  });
+});
